@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Thoughtfully made furniture for comfortable, considered living from Haven & Oak Furniture.">
+  <title>Haven & Oak Furniture | Thoughtful Furniture for Living</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #262626;
+    }
+
+    h1, h2, h3, .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+
+    :focus-visible {
+      outline: 3px solid #a16207;
+      outline-offset: 3px;
+    }
+
+    .eyebrow {
+      letter-spacing: .18em;
+    }
+  </style>
+</head>
+
+<body class="bg-[#F7F4EF]">
+
+  <!-- Announcement Bar -->
+  <div class="bg-stone-900 px-4 py-2 text-center text-xs tracking-wide text-white sm:text-sm">
+    Thoughtful furniture, delivered with care · Free delivery on orders over KSh 80,000
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-stone-200 bg-[#F7F4EF]/95 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+
+      <a href="index.html" class="flex items-center gap-2" aria-label="Haven and Oak home">
+        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#8B6B4A] text-lg text-white">
+          H<span class="text-xs">&</span>O
+        </span>
+
+        <span>
+          <span class="block font-serif text-xl font-semibold leading-5 sm:text-2xl">
+            Haven <span class="text-[#8B6B4A]">&</span> Oak
+          </span>
+          <span class="mt-1 block text-[9px] uppercase tracking-[.28em] text-stone-500">
+            Furniture for living
+          </span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
+        <a data-nav="index.html" href="index.html" class="nav-link text-sm hover:text-amber-800">Home</a>
+        <a data-nav="shop.html" href="shop.html" class="nav-link text-sm hover:text-amber-800">Shop</a>
+        <a data-nav="product.html" href="product.html" class="nav-link text-sm hover:text-amber-800">Product</a>
+        <a data-nav="about.html" href="about.html" class="nav-link text-sm hover:text-amber-800">Our Story</a>
+        <a data-nav="contact.html" href="contact.html" class="nav-link text-sm hover:text-amber-800">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="shop.html" class="hidden text-sm hover:text-amber-800 sm:inline">
+          Explore pieces
+        </a>
+
+        <a href="cart.html" class="relative flex h-10 w-10 items-center justify-center rounded-full border border-stone-300 hover:bg-white" aria-label="Shopping cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path d="M3 3h2l2.4 12.2a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L22 7H6"/>
+            <circle cx="10" cy="21" r="1"/>
+            <circle cx="19" cy="21" r="1"/>
+          </svg>
+          <span data-cart-count class="absolute -right-1 -top-1 hidden min-w-5 rounded-full bg-[#8B6B4A] px-1 text-center text-xs leading-5 text-white">0</span>
+        </a>
+
+        <button data-menu-button aria-expanded="false" aria-label="Open navigation menu" class="flex h-10 w-10 items-center justify-center rounded-full border border-stone-300 lg:hidden">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav data-mobile-menu class="hidden border-t border-stone-200 px-4 pb-4 lg:hidden" aria-label="Mobile navigation">
+      <div class="mx-auto grid max-w-7xl gap-1 pt-3">
+        <a href="index.html" class="rounded-lg px-3 py-2 hover:bg-white">Home</a>
+        <a href="shop.html" class="rounded-lg px-3 py-2 hover:bg-white">Shop all furniture</a>
+        <a href="product.html" class="rounded-lg px-3 py-2 hover:bg-white">Featured product</a>
+        <a href="about.html" class="rounded-lg px-3 py-2 hover:bg-white">Our story</a>
+        <a href="contact.html" class="rounded-lg px-3 py-2 hover:bg-white">Contact</a>
+        <a href="cart.html" class="rounded-lg px-3 py-2 hover:bg-white">Shopping cart</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Active Navigation Link -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const page = location.pathname.split('/').pop() || 'index.html';
+
+      document.querySelectorAll('[data-nav]').forEach(a => {
+        if (a.dataset.nav === page) {
+          a.classList.add(
+            'font-semibold',
+            'text-amber-900',
+            'underline',
+            'underline-offset-8'
+          );
+
+          a.setAttribute('aria-current', 'page');
+        }
+      });
+    });
+  </script>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+      <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-10 sm:px-6 md:py-16 lg:grid-cols-[.92fr_1.08fr] lg:px-8 lg:py-20">
+
+        <div class="relative z-10 py-4">
+          <p class="eyebrow text-xs font-semibold uppercase text-[#8B6B4A]">
+            Comfort, considered
+          </p>
+
+          <h1 class="mt-5 max-w-xl text-5xl leading-[1.08] text-stone-900 sm:text-6xl lg:text-7xl">
+            Make room for <span class="italic text-[#8B6B4A]">better</span> living.
+          </h1>
+
+          <p class="mt-6 max-w-lg text-base leading-8 text-stone-600 sm:text-lg">
+            Furniture with a softer touch and a lasting point of view.
+            Discover thoughtful pieces made to feel at home in your home.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="shop.html" class="rounded-full bg-stone-900 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#8B6B4A]">
+              Shop the collection <span aria-hidden="true">↗</span>
+            </a>
+
+            <a href="about.html" class="rounded-full border border-stone-400 px-7 py-3.5 text-sm font-semibold hover:bg-white">
+              Explore our story
+            </a>
+          </div>
+
+          <div class="mt-10 flex items-center gap-4">
+            <div class="flex -space-x-2">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="" class="h-9 w-9 rounded-full border-2 border-[#F7F4EF] object-cover">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80" alt="" class="h-9 w-9 rounded-full border-2 border-[#F7F4EF] object-cover">
+              <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=80&q=80" alt="" class="h-9 w-9 rounded-full border-2 border-[#F7F4EF] object-cover">
+            </div>
+
+            <p class="text-xs leading-5 text-stone-500">
+              <span class="font-semibold text-stone-800">Made for everyday life</span>
+              <br>
+              Chosen for comfort, built for living.
+            </p>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -right-3 -top-3 h-28 w-28 rounded-full bg-[#E8DED0] sm:-right-5 sm:-top-5 sm:h-40 sm:w-40"></div>
+
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1500&q=90"
+               alt="Warm contemporary living room with comfortable sofa, wood accents and soft natural light"
+               class="relative aspect-[4/4.2] w-full rounded-[2rem] object-cover shadow-xl sm:aspect-[5/4] lg:aspect-[4/4.7]">
+
+          <div class="absolute -bottom-5 left-4 max-w-[230px] rounded-2xl bg-white p-4 shadow-lg sm:bottom-6 sm:-left-8">
+            <p class="text-xs uppercase tracking-widest text-stone-500">
+              The art of slowing down
+            </p>
+            <p class="mt-2 font-serif text-xl">
+              A home that feels like you.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Store Benefits -->
+    <section class="border-y border-stone-200 bg-white">
+      <div class="mx-auto grid max-w-7xl grid-cols-2 gap-5 px-4 py-5 text-center text-xs font-medium text-stone-600 sm:grid-cols-4 sm:px-6 sm:py-6 sm:text-sm lg:px-8">
+        <p>✳ Thoughtful design</p>
+        <p>◇ Quality materials</p>
+        <p>♡ Everyday comfort</p>
+        <p>↗ Delivery with care</p>
+      </div>
+    </section>
+
+    <!-- Furniture Categories -->
+    <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <div>
+          <p class="eyebrow text-xs font-semibold uppercase text-[#8B6B4A]">
+            Find your feeling
+          </p>
+          <h2 class="mt-3 text-4xl sm:text-5xl">
+            Spaces to settle into.
+          </h2>
+        </div>
+
+        <a href="shop.html" class="text-sm font-semibold underline underline-offset-4 hover:text-amber-800">
+          Explore all furniture ↗
+        </a>
+      </div>
+
+      <div class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+
+        <a href="shop.html" class="group">
+          <div class="overflow-hidden rounded-2xl">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=85"
+                 alt="Living room with a soft sofa and natural textures"
+                 class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105">
+          </div>
+          <div class="mt-3 flex items-center justify-between">
+            <h3 class="font-serif text-xl">Living room</h3>
+            <span>↗</span>
+          </div>
+          <p class="mt-1 text-sm text-stone-500">Settle in, stretch out</p>
+        </a>
+
+        <a href="shop.html" class="group">
+          <div class="overflow-hidden rounded-2xl">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=85"
+                 alt="Peaceful bedroom with a timber bed"
+                 class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105">
+          </div>
+          <div class="mt-3 flex items-center justify-between">
+            <h3 class="font-serif text-xl">Bedroom</h3>
+            <span>↗</span>
+          </div>
+          <p class="mt-1 text-sm text-stone-500">Rest comes naturally</p>
+        </a>
+
+        <a href="shop.html" class="group">
+          <div class="overflow-hidden rounded-2xl">
+            <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=700&q=85"
+                 alt="Dining table set for a relaxed meal"
+                 class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105">
+          </div>
+          <div class="mt-3 flex items-center justify-between">
+            <h3 class="font-serif text-xl">Dining room</h3>
+            <span>↗</span>
+          </div>
+          <p class="mt-1 text-sm text-stone-500">Gather a little longer</p>
+        </a>
+
+        <a href="shop.html" class="group">
+          <div class="overflow-hidden rounded-2xl">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=85"
+                 alt="Bright home office with desk and chair"
+                 class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105">
+          </div>
+          <div class="mt-3 flex items-center justify-between">
+            <h3 class="font-serif text-xl">Home office</h3>
+            <span>↗</span>
+          </div>
+          <p class="mt-1 text-sm text-stone-500">Make space for focus</p>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Featured Furniture -->
+    <section class="bg-[#E8DED0] py-16 lg:py-20">
+      <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+
+        <div>
+          <p class="eyebrow text-xs font-semibold uppercase text-[#8B6B4A]">
+            Loved, lived in, well made
+          </p>
+
+          <h2 class="mt-3 max-w-lg text-4xl leading-tight sm:text-5xl">
+            The pieces you’ll come back to.
+          </h2>
+
+          <p class="mt-5 max-w-lg leading-7 text-stone-600">
+            From slow Sunday mornings to dinner that turns into a long conversation,
+            our best-loved pieces are designed around the moments that matter.
+          </p>
+
+          <a href="shop.html" class="mt-7 inline-flex rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-white hover:bg-[#8B6B4A]">
+            Shop best sellers ↗
+          </a>
+        </div>
+
+        <div data-product-grid data-source="featured" class="grid grid-cols-1 gap-4 sm:grid-cols-2"></div>
+
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div class="grid items-center gap-10 lg:grid-cols-2">
+
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85"
+             alt="Carefully styled living space with natural materials and warm neutral tones"
+             class="aspect-[5/4] w-full rounded-[2rem] object-cover">
+
+        <div>
+          <p class="eyebrow text-xs font-semibold uppercase text-[#8B6B4A]">
+            The Haven & Oak difference
+          </p>
+
+          <h2 class="mt-3 text-4xl leading-tight sm:text-5xl">
+            Good design should feel good, too.
+          </h2>
+
+          <div class="mt-7 space-y-5">
+
+            <div class="flex gap-4">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E8DED0]">✳</span>
+              <div>
+                <h3 class="font-semibold">Considered craftsmanship</h3>
+                <p class="mt-1 text-sm leading-6 text-stone-500">
+                  Thoughtful forms, practical details, and materials chosen with care.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E8DED0]">♡</span>
+              <div>
+                <h3 class="font-semibold">Comfort that welcomes you</h3>
+                <p class="mt-1 text-sm leading-6 text-stone-500">
+                  Pieces designed to be used, enjoyed, and woven into everyday life.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E8DED0]">↗</span>
+              <div>
+                <h3 class="font-semibold">Delivery with care</h3>
+                <p class="mt-1 text-sm leading-6 text-stone-500">
+                  A smoother journey from choosing your piece to making it feel at home.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <a href="about.html" class="mt-7 inline-block text-sm font-semibold underline underline-offset-4">
+            A little more about us ↗
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="bg-white py-16">
+      <div class="mx-auto max-w-5xl px-4 text-center sm:px-6">
+        <p class="eyebrow text-xs font-semibold uppercase text-[#8B6B4A]">
+          Kind words, lived in spaces
+        </p>
+
+        <h2 class="mt-3 text-4xl sm:text-5xl">
+          A little love from home.
+        </h2>
+
+        <div class="mt-10 grid gap-5 text-left md:grid-cols-3">
+
+          <blockquote class="rounded-2xl bg-[#F7F4EF] p-6">
+            <p class="text-amber-700">★★★★★</p>
+            <p class="mt-4 font-serif text-xl leading-7">
+              “The sofa has become everyone’s favourite place to land.”
+            </p>
+            <footer class="mt-5 text-sm text-stone-500">
+              — Wanjiku M.
+              <span class="block text-xs">Illustrative sample review</span>
+            </footer>
+          </blockquote>
+
+          <blockquote class="rounded-2xl bg-[#F7F4EF] p-6">
+            <p class="text-amber-700">★★★★★</p>
+            <p class="mt-4 font-serif text-xl leading-7">
+              “Beautifully simple, and the wood finish is even warmer in person.”
+            </p>
+            <footer class="mt-5 text-sm text-stone-500">
+              — Daniel K.
+              <span class="block text-xs">Illustrative sample review</span>
+            </footer>
+          </blockquote>
+
+          <blockquote class="rounded-2xl bg-[#F7F4EF] p-6">
+            <p class="text-amber-700">★★★★★</p>
+            <p class="mt-4 font-serif text-xl leading-7">
+              “Our dining space finally feels like somewhere to gather.”
+            </p>
+            <footer class="mt-5 text-sm text-stone-500">
+              — Amina N.
+              <span class="block text-xs">Illustrative sample review</span>
+            </footer>
+          </blockquote>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="overflow-hidden rounded-[2rem] bg-stone-900 px-6 py-10 text-white sm:px-10 lg:flex lg:items-center lg:justify-between lg:px-14 lg:py-12">
+
+        <div>
+          <p class="eyebrow text-xs uppercase text-[#C7A783]">
+            A good thing in your inbox
+          </p>
+
+          <h2 class="mt-3 text-3xl sm:text-4xl">
+            A softer way to stay in touch.
+          </h2>
+
+          <p class="mt-3 max-w-xl text-sm leading-6 text-stone-300">
+            New arrivals, simple styling ideas, and little notes from our world.
+            No clutter, just the good things.
+          </p>
+        </div>
+
+        <form data-demo-form="newsletter" class="mt-7 w-full max-w-md lg:mt-0">
+          <label for="home-newsletter" class="sr-only">Email address</label>
+
+          <div class="flex">
+            <input id="home-newsletter" name="email" type="email" required
+                   placeholder="Enter your email"
+                   class="min-w-0 flex-1 rounded-l-full border border-stone-600 bg-stone-800 px-5 py-3 text-sm text-white placeholder:text-stone-400">
+
+            <button class="rounded-r-full bg-[#C7A783] px-5 text-sm font-semibold text-stone-900 hover:bg-white">
+              Subscribe
+            </button>
+          </div>
+
+          <p data-form-message aria-live="polite"></p>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-20 bg-stone-900 text-stone-200">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+
+      <div>
+        <a href="index.html" class="font-serif text-2xl text-white">
+          Haven <span class="text-[#C7A783]">&</span> Oak
+        </a>
+
+        <p class="mt-4 max-w-xs text-sm leading-7 text-stone-400">
+          Furniture for the everyday moments that make a home.
+          Thoughtful forms, honest materials, lasting comfort.
+        </p>
+
+        <p class="mt-4 text-xs text-stone-500">
+          Made for real life. Chosen for years.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-white">Explore</h2>
+
+        <ul class="mt-4 space-y-3 text-sm text-stone-400">
+          <li><a class="hover:text-white" href="index.html">Home</a></li>
+          <li><a class="hover:text-white" href="shop.html">Shop all</a></li>
+          <li><a class="hover:text-white" href="product.html">Featured sofa</a></li>
+          <li><a class="hover:text-white" href="about.html">Our story</a></li>
+          <li><a class="hover:text-white" href="contact.html">Contact</a></li>
+          <li><a class="hover:text-white" href="cart.html">Shopping cart</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-white">Customer care</h2>
+
+        <ul class="mt-4 space-y-3 text-sm text-stone-400">
+          <li><a href="contact.html#faq" class="hover:text-white">Delivery & returns</a></li>
+          <li><a href="contact.html#faq" class="hover:text-white">Furniture care</a></li>
+          <li><a href="contact.html" class="hover:text-white">Get in touch</a></li>
+        </ul>
+
+        <p class="mt-5 text-sm text-stone-400">
+          Mon–Sat · 9:00 AM–6:00 PM
+          <span class="block text-xs text-stone-500">Sample business hours</span>
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-white">A little note from us</h2>
+
+        <p class="mt-4 text-sm leading-6 text-stone-400">
+          Occasional styling ideas, new arrivals, and considered pieces for your home.
+        </p>
+
+        <form data-demo-form="newsletter" class="mt-4">
+          <label class="sr-only" for="footer-email">Email address</label>
+
+          <div class="flex">
+            <input id="footer-email" name="email" type="email" required
+                   placeholder="Your email address"
+                   class="min-w-0 flex-1 rounded-l-lg border border-stone-600 bg-stone-800 px-3 py-3 text-sm text-white placeholder:text-stone-500">
+
+            <button class="rounded-r-lg bg-[#C7A783] px-4 text-sm font-semibold text-stone-900 hover:bg-white" type="submit">
+              Join
+            </button>
+          </div>
+
+          <p data-form-message aria-live="polite"></p>
+        </form>
+
+        <div class="mt-4 flex gap-4 text-sm text-stone-400">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram ↗</a>
+          <a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">Pinterest ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="border-t border-stone-800">
+      <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-stone-500 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+        <p>© <span data-current-year></span> Haven & Oak Furniture. All rights reserved.</p>
+        <p>Prices shown in KSh · Demonstration storefront, not a live checkout.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared JavaScript -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
